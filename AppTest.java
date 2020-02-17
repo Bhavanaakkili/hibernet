@@ -1,4 +1,4 @@
-package com.cts.inherit;
+package com.cts.hibernet1;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

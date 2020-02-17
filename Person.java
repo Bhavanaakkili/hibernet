@@ -1,56 +1,65 @@
-package com.vp;
+package com.cts.embeded;
 
-import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="PERSON")
-@Inheritance(strategy=InheritanceType.JOINED)
+@Table(name="PERSON_EMBD")
 public class Person {
-	@Id
-	@GeneratedValue
-	@Column(name="PERSON_ID")
-    private Long personId;	
-
-	@Column(name="FIRSTNAME")
-	private String firstname;
 	
-	@Column(name="LASTNAME")
-	private String lastname;
-	
-	public Person() {
-	}
-	public Person(String firstname, String lastname) {
-		this.firstname = firstname;
-		this.lastname = lastname;
-	}
-	
-	public Long getPersonId() {
-		return personId;
-	}
+  @Id
+  @GeneratedValue
+  private int pid;
+  
+  private String name;
+  
+  @Embedded
+  private Address address;
+  
+  @Override
+  public String toString() {
+	return "Person [pid=" + pid + ", name=" + name + ", address=" + address + "]";
+  }
 
-	public void setPersonId(Long personId) {
-		this.personId = personId;
-	}
+  public Person(int pid, String name, Address address) {
+	super();
+	this.pid = pid;
+	this.name = name;
+	this.address = address;
+  }
 
-	public String getFirstname() {
-		return firstname;
-	}
+  public Person() {
+	super();
+	// TODO Auto-generated constructor stub
+  }
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
+  public int getPid() {
+	return pid;
+  }
 
-	public String getLastname() {
-		return lastname;
-	}
+  public void setPid(int pid) {
+	this.pid = pid;
+  }
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
+  public String getName() {
+	return name;
+  }
+
+  public void setName(String name) {
+	this.name = name;
+  }
+
+  public Address getAddress() {
+	return address;
+  }
+
+  public void setAddress(Address address) {
+	this.address = address;
+  }
+
+  
 }
+
